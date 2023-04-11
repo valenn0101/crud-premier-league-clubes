@@ -2,24 +2,17 @@ const express = require('express');
 
 const router = express.Router();
 
+const clubController = require('../../controllers/clubController');
+
 router
-  .get('/', (req, res) => {
-    res.send('Gett all clubs');
-  })
+  .get('/', clubController.getAllClub)
 
-  .get('/:clubId', (req, res) => {
-    res.send(`Get club ${req.params.clubId}`);
-  })
+  .get('/:clubId', clubController.getOneClub)
 
-  .post('/:clubId', (req, res) => {
-    res.send(`Create club ${req.params.clubId}`);
-  })
+  .post('/:clubId', clubController.createNewClub)
 
-  .patch('/:clubId', (req, res) => {
-    res.send(`Update club ${req.params.clubId}`);
-  })
-  .delete('/:clubId', (req, res) => {
-    res.send(`Delete club ${req.params.clubId}`);
-  });
+  .patch('/:clubId', clubController.updateOneClub)
+
+  .delete('/:clubId', clubController.delateOneClub);
 
 module.exports = router;
