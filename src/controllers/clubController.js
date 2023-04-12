@@ -1,8 +1,8 @@
 const clubService = require('../services/clubService');
 
 const getAllClub = (req, res) => {
-  const allClub = clubService.allClub();
-  res.send('Get all club');
+  const allClub = clubService.getAllClub();
+  res.send({ status: 'OK', data: allClub });
 };
 
 const getOneClub = (req, res) => {
@@ -11,12 +11,29 @@ const getOneClub = (req, res) => {
 };
 
 const createNewClub = (req, res) => {
-  const createdClub = clubService.createClub(req.params.clubId);
-  res.send(`Create club ${req.params.clubId}`);
+  const { body } = req;
+  if (!body.name || !body.tla || !body.crestUrl || !body.clubColors || !body.venue) {
+    return;
+  }
+  const newClub = {
+    name: body.name,
+    shortName: body.shortName,
+    tla: body.tla,
+    crestUrl: body.crestUrl,
+    adress: body.adress,
+    phone: body.phone,
+    website: body.website,
+    email: body.email,
+    founded: body.founder,
+    clubColors: body.clubColors,
+    venue: body.venue,
+  };
+  const createdClub = clubService.createNewClub(newClub);
+  res.status(201).send({ status: 'OK', data: createdClub });
 };
 
 const updateOneClub = (req, res) => {
-  const updatedClub = clubService.updatedClub(req.params.clubId);
+  const updatedClub = clubService.updateOneClub(req.params.clubId);
   res.send(`Update club ${req.params.clubId}`);
 };
 
