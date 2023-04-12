@@ -18,25 +18,6 @@
         "clubColors": "Red / White",
         "venue": "Emirates Stadium",
         "lastUpdated": "2020-05-14T02:41:34Z"
-      },
-      {
-        "id": 58,
-        "area": {
-          "id": 2072,
-          "name": "England"
-        },
-        "name": "Chelsea FC",
-        "shortName": "Chelsea",
-        "tla": "CHE",
-        "crestUrl": "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
-        "address": "Fulham Road London SW6 1HS",
-        "phone": "+44 (0871) 9841955",
-        "website": "http://www.chelseafc.com",
-        "email": "info@chelseafc.com",
-        "founded": 1905,    
-        "clubColors": "Royal Blue / White",
-        "venue": "Stamford Bridge",
-        "lastUpdated": "2020-05-14T02:41:34Z"
       }
     ]
   }
