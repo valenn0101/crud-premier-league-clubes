@@ -45,6 +45,19 @@ const updateOneClub = (clubId, changes) => {
   return updatedClub;
 };
 
+const deleteOneClub = (clubId) => {
+  const indexForDeleted = DB.clubs.findIndex(
+    (club) => club.id === clubId,
+  );
+
+  if (indexForDeleted === -1) {
+    return;
+  }
+
+  DB.clubs.splice(indexForDeleted, 1);
+  saveToDB(DB);
+};
+
 module.exports = {
-  getAllClubs, createNewClub, getOneClub, updateOneClub,
+  getAllClubs, createNewClub, getOneClub, updateOneClub, deleteOneClub,
 };

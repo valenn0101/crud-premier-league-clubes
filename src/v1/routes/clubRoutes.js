@@ -13,6 +13,6 @@ router
 
   .patch('/:clubId', clubController.updateOneClub)
 
-  .delete('/:clubId', clubController.delateOneClub);
+  .delete('/:clubId', clubController.deleteOneClub);
 
 module.exports = router;

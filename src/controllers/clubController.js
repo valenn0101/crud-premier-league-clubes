@@ -61,9 +61,16 @@ const updateOneClub = (req, res) => {
   res.send({ status: 'OK', data: updatedClub });
 };
 
-const delateOneClub = (req, res) => {
-  const delatedClub = clubService.delateOneClub(req.params.clubId);
-  res.send(`Delate club ${req.params.clubId}`);
+const deleteOneClub = (req, res) => {
+  const {
+    params: { clubId },
+  } = req;
+  if (!clubId) {
+    return;
+  }
+
+  clubService.delateOneClub(req.params.clubId);
+  res.status(204).send(`Delate club ${req.params.clubId}`);
 };
 
 module.exports = {
@@ -71,5 +78,5 @@ module.exports = {
   getOneClub,
   createNewClub,
   updateOneClub,
-  delateOneClub,
+  deleteOneClub,
 };

@@ -24,7 +24,9 @@ const updateOneClub = (clubId, changes) => {
   const updatedClub = clubInfo.updateOneClub(clubId, changes);
   return updatedClub;
 };
-const delateOneClub = () => {};
+const delateOneClub = (clubId) => {
+  clubInfo.deleteOneClub(clubId);
+};
 
 module.exports = {
   getAllClub,
