@@ -12,11 +12,12 @@ const createNewClub = (newClub) => {
   const clubToInsert = {
     ...newClub,
     id: uuid(),
-    createdAt: new Date().toLocaleDateString('es-ARG', { timeZone: 'GMT-3' }),
-    updatedAt: new Date().toLocaleDateString('es-ARG', { timeZone: 'GMT-3' }),
+    createdAt: new Date().toISOString('es-ARG', { timeZone: 'GMT-3' }),
+    updatedAt: new Date().toISOString('es-ARG', { timeZone: 'GMT-3' }),
   };
 
   const createdClub = clubInfo.createNewClub(clubToInsert);
+  return createdClub;
 };
 const updateOneClub = () => {
 

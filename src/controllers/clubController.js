@@ -20,14 +20,15 @@ const createNewClub = (req, res) => {
     shortName: body.shortName,
     tla: body.tla,
     crestUrl: body.crestUrl,
-    adress: body.adress,
+    address: body.address,
     phone: body.phone,
     website: body.website,
     email: body.email,
-    founded: body.founder,
+    founded: body.founded,
     clubColors: body.clubColors,
     venue: body.venue,
   };
+  console.log('newClub', newClub);
   const createdClub = clubService.createNewClub(newClub);
   res.status(201).send({ status: 'OK', data: createdClub });
 };

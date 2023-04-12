@@ -9,7 +9,7 @@ router
 
   .get('/:clubId', clubController.getOneClub)
 
-  .post('/:clubId', clubController.createNewClub)
+  .post('/', clubController.createNewClub)
 
   .patch('/:clubId', clubController.updateOneClub)
 
