@@ -1,3 +1,4 @@
+const { v4: uuid } = require('uuid');
 const clubInfo = require('../database/clubInfo');
 
 const getAllClub = () => {
@@ -7,8 +8,15 @@ const getAllClub = () => {
 const getOneClub = () => {
 
 };
-const createNewClub = () => {
+const createNewClub = (newClub) => {
+  const clubToInsert = {
+    ...newClub,
+    id: uuid(),
+    createdAt: new Date().toLocaleDateString('es-ARG', { timeZone: 'GMT-3' }),
+    updatedAt: new Date().toLocaleDateString('es-ARG', { timeZone: 'GMT-3' }),
+  };
 
+  const createdClub = clubInfo.createNewClub(clubToInsert);
 };
 const updateOneClub = () => {
 
