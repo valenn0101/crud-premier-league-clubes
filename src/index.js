@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use('/api/v1/club', v1ClubRouter);
+app.use('/api/v1/clubs', v1ClubRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

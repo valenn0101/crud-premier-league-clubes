@@ -5,8 +5,9 @@ const getAllClub = () => {
   const allClubs = clubInfo.getAllClubs();
   return allClubs;
 };
-const getOneClub = () => {
-
+const getOneClub = (clubId) => {
+  const club = clubInfo.getOneClub(clubId);
+  return club;
 };
 const createNewClub = (newClub) => {
   const clubToInsert = {

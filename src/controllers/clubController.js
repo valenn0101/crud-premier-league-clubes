@@ -6,8 +6,14 @@ const getAllClub = (req, res) => {
 };
 
 const getOneClub = (req, res) => {
-  const OneClub = clubService.getOneClub(req.params.clubId);
-  res.send(`Get club ${req.params.clubId}`);
+  const { params: { clubId } } = req;
+
+  if (!clubId) {
+    return;
+  }
+
+  const club = clubService.getOneClub(clubId);
+  res.send({ status: 'OK', data: club });
 };
 
 const createNewClub = (req, res) => {
