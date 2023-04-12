@@ -6,7 +6,9 @@ const getAllClub = (req, res) => {
 };
 
 const getOneClub = (req, res) => {
-  const { params: { clubId } } = req;
+  const {
+    params: { clubId },
+  } = req;
 
   if (!clubId) {
     return;
@@ -18,7 +20,13 @@ const getOneClub = (req, res) => {
 
 const createNewClub = (req, res) => {
   const { body } = req;
-  if (!body.name || !body.tla || !body.crestUrl || !body.clubColors || !body.venue) {
+  if (
+    !body.name
+    || !body.tla
+    || !body.crestUrl
+    || !body.clubColors
+    || !body.venue
+  ) {
     return;
   }
   const newClub = {
@@ -40,8 +48,17 @@ const createNewClub = (req, res) => {
 };
 
 const updateOneClub = (req, res) => {
-  const updatedClub = clubService.updateOneClub(req.params.clubId);
-  res.send(`Update club ${req.params.clubId}`);
+  const {
+    body,
+    params: { clubId },
+  } = req;
+
+  if (!clubId) {
+    return;
+  }
+
+  const updatedClub = clubService.updateOneClub(clubId, body);
+  res.send({ status: 'OK', data: updatedClub });
 };
 
 const delateOneClub = (req, res) => {

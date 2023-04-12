@@ -27,6 +27,24 @@ const createNewClub = (newClub) => {
   return newClub;
 };
 
+const updateOneClub = (clubId, changes) => {
+  const indexForUpdated = DB.clubs.findIndex((club) => club.id === clubId);
+
+  if (indexForUpdated === -1) {
+    return;
+  }
+
+  const updatedClub = {
+    ...DB.clubs[indexForUpdated],
+    ...changes,
+    updatedAt: new Date().toISOString('es-ARG', { timeZone: 'GMT-3' }),
+  };
+
+  DB.clubs[indexForUpdated] = updatedClub;
+  saveToDB(DB);
+  return updatedClub;
+};
+
 module.exports = {
-  getAllClubs, createNewClub, getOneClub,
+  getAllClubs, createNewClub, getOneClub, updateOneClub,
 };

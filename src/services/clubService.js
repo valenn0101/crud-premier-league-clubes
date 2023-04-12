@@ -20,12 +20,11 @@ const createNewClub = (newClub) => {
   const createdClub = clubInfo.createNewClub(clubToInsert);
   return createdClub;
 };
-const updateOneClub = () => {
-
+const updateOneClub = (clubId, changes) => {
+  const updatedClub = clubInfo.updateOneClub(clubId, changes);
+  return updatedClub;
 };
-const delateOneClub = () => {
-
-};
+const delateOneClub = () => {};
 
 module.exports = {
   getAllClub,
