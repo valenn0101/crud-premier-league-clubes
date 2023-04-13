@@ -13,9 +13,14 @@ const getOneClub = (clubId) => {
 
 const createNewClub = (newClub) => {
   const isAlreadyAdded = DB.clubs.findIndex((club) => club.tla === newClub.tla) > -1;
+  const maxClubs = 20;
 
   if (isAlreadyAdded) {
     return;
+  }
+
+  if (DB.clubs.length >= maxClubs) {
+    return res.status(403).send('Se ha alcanzado el límite máximo de equipos permitidos');
   }
 
   DB.clubs.push(newClub);
