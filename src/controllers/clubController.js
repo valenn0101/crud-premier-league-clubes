@@ -1,8 +1,12 @@
 const clubService = require('../services/clubService');
 
 const getAllClub = (req, res) => {
-  const allClub = clubService.getAllClub();
-  res.send({ status: 'OK', data: allClub });
+  const limit = req.query.limit ? parseInt(req.query.limit) : 20;
+  const allClub = clubService.getAllClub().slice(0, limit);
+  res.render('home_teams', {
+    layout: 'ui',
+    equipos: allClub,
+  });
 };
 
 const getOneClub = (req, res) => {
