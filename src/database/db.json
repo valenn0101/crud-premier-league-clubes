@@ -1,20 +1,3 @@
 {
-  "clubs": [
-    {
-      "name": "Chelsea FC",
-      "shortName": "Chelsea",
-      "tla": "CHE",
-      "crestUrl": "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
-      "address": "Fulham Road London SW6 1HS",
-      "phone": "+44 (0871) 9841955",
-      "website": "http://www.chelseafc.com",
-      "email": "info@chelseafc.com",
-      "founded": 1905,
-      "clubColors": "Royal Blue / White",
-      "venue": "Stamford Bridge",
-      "id": "447d83fd-d301-4b61-b939-c90f5d4dfd3a",
-      "createdAt": "2023-04-12T18:31:17.689Z",
-      "updatedAt": "2023-04-12T18:31:17.689Z"
-    }
-  ]
+  "clubs": []
 }

@@ -34,32 +34,31 @@ const showForm = (req, res) => {
 
 const createNewClub = (req, res) => {
   console.log('createNewClub');
-  const { body } = req;
-  if (
-    !body.name
-    || !body.tla
-    || !body.crestUrl
-    || !body.clubColors
-    || !body.venue
-  ) {
-    return;
+  const { body, file } = req;
+  console.log(body);
+  const requiredFields = ['name', 'tla', 'clubColors', 'venue', 'founded'];
+  const missingFields = requiredFields.filter((field) => !body[field]);
+  if (missingFields.length) {
+    const errorMessage = `Missing required fields: ${missingFields.join(', ')}`;
+    return res.status(400).json({ error: errorMessage });
   }
   const newClub = {
     name: body.name,
     shortName: body.shortName,
     tla: body.tla,
-    crestUrl: body.crestUrl,
-    address: body.address,
+    email: body.email,
     phone: body.phone,
     website: body.website,
-    email: body.email,
     founded: body.founded,
     clubColors: body.clubColors,
     venue: body.venue,
+    address: body.address,
+    crestUrl: file ? file.filename : body.crestUrl,
   };
   console.log('newClub', newClub);
   const createdClub = clubService.createNewClub(newClub);
   res.status(201).send({ status: 'OK', data: createdClub });
+  res.redirect('/api/v1/clubs');
 };
 
 const updateOneClub = (req, res) => {
@@ -75,17 +74,19 @@ const updateOneClub = (req, res) => {
   const updatedClub = clubService.updateOneClub(clubId, body);
   res.send({ status: 'OK', data: updatedClub });
 };
-
 const deleteOneClub = (req, res) => {
+  console.log('Borrar');
+
   const {
     params: { clubId },
   } = req;
+
   if (!clubId) {
     return;
   }
 
-  clubService.delateOneClub(req.params.clubId);
-  res.status(204).send(`Delate club ${req.params.clubId}`);
+  clubService.delateOneClub(clubId);
+  res.status(204).send({ status: 'OK' }).redirect('/');
 };
 
 module.exports = {

@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const clubController = require('../../controllers/clubController');
+const { upload } = require('../../../multer');
 
 router
   .get('/', clubController.getAllClub)
@@ -11,10 +12,10 @@ router
 
   .get('/createClub', clubController.showForm)
 
-  .post('/createClub', clubController.createNewClub)
+  .post('/createClub', upload.single('crestFile'), clubController.createNewClub)
 
   .patch('/:clubId', clubController.updateOneClub)
 
-  .delete('/:clubId', clubController.deleteOneClub);
+  .delete('/delete/:clubId', clubController.deleteOneClub);
 
 module.exports = router;
