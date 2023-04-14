@@ -1,6 +1,7 @@
 const clubService = require('../services/clubService');
 
 const getAllClub = (req, res) => {
+  console.log('getAllClub');
   const limit = req.query.limit ? parseInt(req.query.limit) : 20;
   const allClub = clubService.getAllClub().slice(0, limit);
   res.render('home_teams', {
@@ -10,6 +11,8 @@ const getAllClub = (req, res) => {
 };
 
 const getOneClub = (req, res) => {
+  console.log('getOneClub');
+
   const {
     params: { clubId },
   } = req;
@@ -22,7 +25,15 @@ const getOneClub = (req, res) => {
   res.send({ status: 'OK', data: club });
 };
 
+const showForm = (req, res) => {
+  console.log('showForm');
+  res.render('form', {
+    layout: 'ui',
+  });
+};
+
 const createNewClub = (req, res) => {
+  console.log('createNewClub');
   const { body } = req;
   if (
     !body.name
@@ -80,6 +91,7 @@ const deleteOneClub = (req, res) => {
 module.exports = {
   getAllClub,
   getOneClub,
+  showForm,
   createNewClub,
   updateOneClub,
   deleteOneClub,

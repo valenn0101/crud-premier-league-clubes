@@ -7,9 +7,11 @@ const clubController = require('../../controllers/clubController');
 router
   .get('/', clubController.getAllClub)
 
-  .get('/:clubId', clubController.getOneClub)
+  .get('/show/:clubId', clubController.getOneClub)
 
-  .post('/', clubController.createNewClub)
+  .get('/createClub', clubController.showForm)
+
+  .post('/createClub', clubController.createNewClub)
 
   .patch('/:clubId', clubController.updateOneClub)
 
