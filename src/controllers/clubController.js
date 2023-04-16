@@ -14,7 +14,7 @@ const getOneClub = (req, res) => {
   console.log('getOneClub');
 
   const {
-    params: { clubId },
+    params: { clubId, file },
   } = req;
 
   if (!clubId) {
@@ -22,7 +22,21 @@ const getOneClub = (req, res) => {
   }
 
   const club = clubService.getOneClub(clubId);
-  res.send({ status: 'OK', data: club });
+  res.render('team', {
+    layout: 'ui',
+    id: club.id,
+    name: club.name,
+    shortName: club.shortName,
+    tla: club.tla,
+    email: club.email,
+    phone: club.phone,
+    website: club.website,
+    founded: club.founded,
+    clubColors: club.clubColors,
+    venue: club.venue,
+    address: club.address,
+    crestUrl: file ? file.filename : club.crestUrl,
+  });
 };
 
 const showForm = (req, res) => {
@@ -68,6 +82,7 @@ const editOneClub = (req, res) => {
 
   res.render('formEdit', {
     layout: 'ui',
+    id: club.id,
     name: club.name,
     shortName: club.shortName,
     tla: club.tla,
@@ -83,6 +98,7 @@ const editOneClub = (req, res) => {
 };
 
 const updateOneClub = (req, res) => {
+  const method = req.body._method;
   const {
     body,
     params: { clubId },
@@ -92,8 +108,8 @@ const updateOneClub = (req, res) => {
     return res.status(404).send({ Error: 'CLUB NOT FOUND' });
   }
 
-  const updatedClub = clubService.updateOneClub(clubId, body);
-  res.send({ status: 'OK', data: updatedClub });
+  clubService.updateOneClub(clubId, body);
+  res.redirect('/api/v1/clubs');
 };
 
 const deleteOneClub = (req, res) => {
