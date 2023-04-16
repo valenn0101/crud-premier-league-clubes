@@ -1,19 +1,19 @@
 {
   "clubs": [
     {
-      "name": "Arsenal FC de Gabi",
+      "name": "Arsenal FC",
       "shortName": "Arsenal",
       "tla": "ARS",
       "email": "info@arsenal.co.uk",
       "phone": "+44 (020) 76195003",
       "website": "http://www.arsenal.com",
-      "founded": 1886,
+      "founded": "1886",
       "clubColors": "Red / White",
       "venue": "Emirates Stadium",
       "address": "75 Drayton Park London N5 1BU",
       "id": "c2a9cef3-5244-4a55-856e-f190013158af",
       "createdAt": "2023-04-15T02:21:24.648Z",
-      "updatedAt": "2023-04-15T15:25:56.800Z",
+      "updatedAt": "2023-04-16T03:18:27.389Z",
       "crestUrl": "https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg",
       "lastUpdated": "2020-05-14T02:41:34Z"
     }

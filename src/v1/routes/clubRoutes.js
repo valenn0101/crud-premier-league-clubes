@@ -16,7 +16,7 @@ router
 
   .get('/edit/:clubId', clubController.editOneClub)
 
-  .patch('/edit/:clubId', upload.single('crestFile'), clubController.updateOneClub)
+  .post('/editClub/:clubId', upload.single('crestFile'), clubController.updateOneClub)
 
   .get('/delete/:clubId', clubController.deleteOneClub);
 
