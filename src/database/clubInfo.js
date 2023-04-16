@@ -51,9 +51,7 @@ const updateOneClub = (clubId, changes) => {
 };
 
 const deleteOneClub = (clubId) => {
-  const indexForDeleted = DB.clubs.findIndex(
-    (club) => club.id === clubId,
-  );
+  const indexForDeleted = DB.clubs.findIndex((club) => club.id === clubId);
 
   if (indexForDeleted === -1) {
     return;
@@ -64,5 +62,9 @@ const deleteOneClub = (clubId) => {
 };
 
 module.exports = {
-  getAllClubs, createNewClub, getOneClub, updateOneClub, deleteOneClub,
+  getAllClubs,
+  createNewClub,
+  getOneClub,
+  updateOneClub,
+  deleteOneClub,
 };
