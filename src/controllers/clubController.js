@@ -35,7 +35,6 @@ const showForm = (req, res) => {
 const createNewClub = (req, res) => {
   console.log('createNewClub');
   const { body, file } = req;
-  console.log(body);
   const requiredFields = ['name', 'tla', 'clubColors', 'venue', 'founded'];
   const missingFields = requiredFields.filter((field) => !body[field]);
   if (missingFields.length) {
@@ -55,10 +54,32 @@ const createNewClub = (req, res) => {
     address: body.address,
     crestUrl: file ? file.filename : body.crestUrl,
   };
-  console.log('newClub', newClub);
   const createdClub = clubService.createNewClub(newClub);
-  res.status(201).send({ status: 'OK', data: createdClub });
   res.redirect('/api/v1/clubs');
+};
+
+const editOneClub = (req, res) => {
+  const { clubId, file } = req.params;
+  const club = clubService.getOneClub(clubId);
+
+  if (!club) {
+    return res.status(404).json({ error: 'Club not found' });
+  }
+
+  res.render('formEdit', {
+    layout: 'ui',
+    name: club.name,
+    shortName: club.shortName,
+    tla: club.tla,
+    email: club.email,
+    phone: club.phone,
+    website: club.website,
+    founded: club.founded,
+    clubColors: club.clubColors,
+    venue: club.venue,
+    address: club.address,
+    crestUrl: file ? file.filename : club.crestUrl,
+  });
 };
 
 const updateOneClub = (req, res) => {
@@ -68,12 +89,13 @@ const updateOneClub = (req, res) => {
   } = req;
 
   if (!clubId) {
-    return;
+    return res.status(404).send({ Error: 'CLUB NOT FOUND' });
   }
 
   const updatedClub = clubService.updateOneClub(clubId, body);
   res.send({ status: 'OK', data: updatedClub });
 };
+
 const deleteOneClub = (req, res) => {
   console.log('Borrar');
 
@@ -86,7 +108,7 @@ const deleteOneClub = (req, res) => {
   }
 
   clubService.delateOneClub(clubId);
-  res.status(204).send({ status: 'OK' }).redirect('/');
+  res.redirect('/api/v1/clubs');
 };
 
 module.exports = {
@@ -94,6 +116,7 @@ module.exports = {
   getOneClub,
   showForm,
   createNewClub,
+  editOneClub,
   updateOneClub,
   deleteOneClub,
 };
