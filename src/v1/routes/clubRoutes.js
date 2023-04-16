@@ -12,11 +12,11 @@ router
 
   .get('/createClub', clubController.showForm)
 
-  .post('/createClub', upload.single('crestFile'), clubController.createNewClub)
+  .post('/createClub', upload.single('crestLocal'), clubController.createNewClub)
 
   .get('/edit/:clubId', clubController.editOneClub)
 
-  .post('/editClub/:clubId', upload.single('crestFile'), clubController.updateOneClub)
+  .post('/editClub/:clubId', upload.single('crestLocal'), clubController.updateOneClub)
 
   .get('/delete/:clubId', clubController.deleteOneClub);
 

@@ -35,7 +35,8 @@ const getOneClub = (req, res) => {
     clubColors: club.clubColors,
     venue: club.venue,
     address: club.address,
-    crestUrl: file ? file.filename : club.crestUrl,
+    crestUrl: club.crestUrl,
+    crestLocal: club.crestLocal,
   });
 };
 
@@ -66,7 +67,8 @@ const createNewClub = (req, res) => {
     clubColors: body.clubColors,
     venue: body.venue,
     address: body.address,
-    crestUrl: file ? file.filename : body.crestUrl,
+    crestUrl: body.crestUrl,
+    crestLocal: file.filename,
   };
   const createdClub = clubService.createNewClub(newClub);
   res.redirect('/api/v1/clubs');
@@ -93,7 +95,8 @@ const editOneClub = (req, res) => {
     clubColors: club.clubColors,
     venue: club.venue,
     address: club.address,
-    crestUrl: file ? file.filename : club.crestUrl,
+    crestUrl: club.crestUrl,
+    crestLocal: club.crestLocal,
   });
 };
 

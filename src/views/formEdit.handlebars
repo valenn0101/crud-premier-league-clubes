@@ -59,15 +59,22 @@
       <input type="file" class="form-control" id="imagen-equipo" name="crestLocal" aria-describedby="inputGroupFileAddon04"
         aria-label="Upload">
     </div>
-    <div class="col-6">
-      <p>Imagen url</p>
-      <img class="rounded mx-auto d-block" src="{{crestUrl}}" alt="Imagen del escudo de {{name}}">
-    </div>
-    {{#if crestLocal}}
-    <div class="col-6">
-      <p>Imagen local</p>
-      <img class="rounded mx-auto d-block" src="{{crestLocal}}" alt="Imagen del escudo de {{name}} local">
-    </div>
+    {{#if crestUrl}}
+      <div class="col-6">
+        <img
+          class="rounded mx-auto d-block teamImg"
+          src="{{crestUrl}}"
+          alt="Imagen del escudo de {{name}} archivo"
+        />
+      </div>
+    {{else}}
+      <div class="col-6">
+        <img
+          class="rounded mx-auto d-block teamImg"
+          src="/public/uploads/{{crestLocal}}"
+          alt="Imagen del escudo de {{name}} local"
+        />
+      </div>
     {{/if}}
     <div class="col-6">
       <button type="submit" class="btn btn-primary align-self-end" id="boton-enviar" value="Subir">Enviar</button>

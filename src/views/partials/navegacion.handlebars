@@ -4,9 +4,9 @@
       <td>{{item.name}}</td>
       <td>
         {{#if item.crestUrl}}
-          <img class="imagen" src="{{item.crestUrl}}" name="url-imagen" />
+          <img class="imagen" src="{{crestUrl}}" name="url-imagen" />
         {{else}}
-          <img class="imagen" src="{{item.crestLocal}}" name="local-imagen" />
+          <img class="imagen" src="../../../public/uploads/{{crestLocal}}" name="local-imagen" />
         {{/if}}
       </td>
       <td>
