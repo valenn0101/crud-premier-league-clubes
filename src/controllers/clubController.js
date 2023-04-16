@@ -108,7 +108,7 @@ const deleteOneClub = (req, res) => {
   }
 
   clubService.delateOneClub(clubId);
-  res.redirect('/api/v1/clubs');
+  res.status(204).send({ status: 'OK' });
 };
 
 module.exports = {

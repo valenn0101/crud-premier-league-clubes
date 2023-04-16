@@ -1,6 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const methodOverride = require('method-override');
 const v1ClubRouter = require('./v1/routes/clubRoutes');
 
 const app = express();
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
+app.use(methodOverride('_method'));
 app.use('/public', express.static('public'));
 app.use(express.json());
 app.use('/api/v1/clubs', v1ClubRouter);

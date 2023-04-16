@@ -18,6 +18,6 @@ router
 
   .patch('/edit/:clubId', upload.single('crestFile'), clubController.updateOneClub)
 
-  .delete('/delete/:clubId', clubController.deleteOneClub);
+  .get('/delete/:clubId', clubController.deleteOneClub);
 
 module.exports = router;
