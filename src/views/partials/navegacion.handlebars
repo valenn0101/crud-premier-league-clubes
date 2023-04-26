@@ -1,0 +1,53 @@
+<tbody id="lista-principal">
+  {{#each items as |item|}}
+    <tr class="border border-white">
+      <td>{{item.name}}</td>
+      <td>
+        {{#if item.crestUrl}}
+          <img class="imagen" src="{{crestUrl}}" name="url-imagen" />
+        {{else}}
+          <img class="imagen" src="../../../public/uploads/{{crestLocal}}" name="local-imagen" />
+        {{/if}}
+      </td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <a
+            href="/api/v1/clubs/show/{{item.id}}"
+            class="btn btn-outline-success"
+          >Ver</a>
+          <a
+            href="/api/v1/clubs/edit/{{item.id}}"
+            class="btn btn-outline-primary"
+          >Editar</a>
+          <form
+            id="delete-form"
+            action="/api/v1/clubs/delete/{{item.id}}"
+            method="get"
+          >
+            <input type="hidden" name="_method" value="DELETE" />
+            <button
+              class="btn btn-outline-warning"
+              type="submit"
+            >Eliminar</button>
+          </form>
+        </div>
+      </td>
+    </tr>
+  {{/each}}
+</tbody>
+<script>
+  const form = document.getElementById('delete-form');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const url = form.action;
+    fetch(url, { method: 'DELETE' })
+      .then(response => {
+        // manejar la respuesta del servidor
+      })
+      .catch(error => {
+        // manejar el error
+      });
+  });
+</script>
+
+

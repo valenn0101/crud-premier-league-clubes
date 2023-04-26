@@ -1,0 +1,29 @@
+<div class="container bg-secondary titulo text-center">
+  <h1>Crud Clubes</h1>
+</div>
+<div class="container bg-seconday">
+  <div>
+    <div class="d-flex justify-content-between bd-highlight mb-3">
+      <div class="p-2">
+        <p>Numero de equipos = <strong>{{equipos.length}}</strong></p>
+        
+      </div>
+      <div class="p-2">
+        <a href="/api/v1/clubs/createClub" id="boton-añadir" class="btn btn-primary">Agregar equipo</a>
+
+      </div>
+    </div>
+  </div>
+  <table class="table table-dark">
+    <thead>
+      <tr class="border border-white">
+        <th scope="col">Nombre</th>
+        <th scope="col">Escudo</th>
+        <th scope="col">Accion</th>
+      </tr>
+    </thead>
+    <tbody id="lista-principal">
+      {{>navegacion items=equipos}}
+
+    </tbody>
+  </table>

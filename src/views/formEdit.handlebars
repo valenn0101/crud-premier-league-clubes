@@ -1,0 +1,92 @@
+<div class="container">
+  <h2 class="text-center">Editando al  {{name}}<strong></strong></h2>
+</div>
+<div class="container">
+  <form class="row g-3 d-flex p-2" action="/api/v1/clubs/editClub/{{id}}" method="post" enctype="multipart/form-data">
+    <div class="col-md-3">
+      <label for="nombre" class="form-label">Nombre del Equipo</label>
+      <input type="text" class="form-control" id="nombre" name="name" placeholder="Arsenal FC" value="{{name}}">
+    </div>
+    <div class="col-md-2">
+      <label for="nombre-abreviado" class="form-label">Nombre Abreviado</label>
+      <input type="text" class="form-control" id="nombre-abreviado" name="shortName" placeholder="Arsenal"
+        value="{{shortName}}">
+    </div>
+    <div class="col-md-2">
+      <label for="nombre-acronimo" class="form-label">Acronimo de tres letras</label>
+      <input type="text" class="form-control" id="nombre-acronimo" name="tla" placeholder="ARS" value="{{tla}}">
+    </div>
+    <div class="col-md-5">
+      <label for="input-email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="input-email" name="email" placeholder="arsenalTop16@gmail.com"
+        value="{{email}}">
+    </div>
+    <div class="col-3">
+      <label for="input-telefono" class="form-label">Telefono</label>
+      <input type="text" class="form-control" id="input-telefono" name="phone" placeholder="+264123456"
+        value="{{phone}}">
+    </div>
+    <div class="col-6">
+      <label for="input-pagina" class="form-label">Pagina web</label>
+      <input type="text" class="form-control" id="input-pagina" name="website" value="{{website}}">
+    </div>
+    <div class="col-3">
+      <label for="input-fundacion" class="form-label">Año de fundacion</label>
+      <input type="text" class="form-control" id="input-fundacion" name="founded" placeholder="1887"
+        value="{{founded}}">
+    </div>
+    <div class="col-2">
+      <label for="input-primer-color" class="form-label">Color</label>
+      <input type="text" class="form-control" id="input-colores" name="clubColors" placeholder="Azul / Rojo"
+        value="{{clubColors}}">
+    </div>
+    <div class="col-7">
+      <label for="input-estadio" class="form-label">Estadio</label>
+      <input type="text" class="form-control" id="input-estadio" name="venue" placeholder="El Monumental"
+        value="{{venue}}">
+    </div>
+    <div class="col-5">
+      <label for="input-direccion" class="form-label">Direccion</label>
+      <input type="text" class="form-control" id="input-direccion" name="address" placeholder="Avenida siempre viva"
+        value="{{address}}">
+    </div>
+    <div class="col-md-7">
+      <label for="imagen-url" class="form-label">Escudo URL</label>
+      <input type="text" class="form-control" id="imagen-url" name="crestUrl"
+        placeholder="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg" value="{{crestUrl}}">
+    </div>
+    <div class="col-12 mt-4">
+      <input type="file" class="form-control" id="imagen-equipo" name="crestLocal" aria-describedby="inputGroupFileAddon04"
+        aria-label="Upload">
+    </div>
+    {{#if crestUrl}}
+      <div class="col-6">
+        <img
+          class="rounded mx-auto d-block teamImg"
+          src="{{crestUrl}}"
+          alt="Imagen del escudo de {{name}} archivo"
+        />
+      </div>
+    {{else}}
+      <div class="col-6">
+        <img
+          class="rounded mx-auto d-block teamImg"
+          src="/public/uploads/{{crestLocal}}"
+          alt="Imagen del escudo de {{name}} local"
+        />
+      </div>
+    {{/if}}
+    <div class="col-6">
+      <button type="submit" class="btn btn-primary align-self-end" id="boton-enviar" value="Subir">Enviar</button>
+    </div>
+    <div class="col-6 d-flex flex-row-reverse">
+      <a href="/api/v1/clubs/" class="btn btn-primary justify-content-end" id="boton-retroceder-equipo"
+        value="retroceder">Retroceder</a>
+    </div>
+    {{#if data.error}}
+    <div class="row g-3 d-flex p-2">
+      <p class="error">{{data.error}}</p>
+    </div>
+    {{/if}}
+  </form>
+</div>

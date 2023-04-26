@@ -1,0 +1,148 @@
+<div class="container">
+  <h2 class="text-center">Este es el {{name}}<strong></strong></h2>
+</div>
+<div class="container">
+  <form
+    class="row g-3 d-flex p-2"
+    action="/form"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <div class="col-md-3">
+      <label for="nombre" class="form-label">Nombre del Equipo</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        placeholder="Arsenal FC"
+        value="{{name}}"
+        disabled
+      />
+    </div>
+    <div class="col-md-2">
+      <label for="nombre-abreviado" class="form-label">Nombre Abreviado</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre-abreviado"
+        placeholder="Arsenal"
+        value="{{shortName}}"
+        disabled
+      />
+    </div>
+    <div class="col-md-2">
+      <label for="nombre-acronimo" class="form-label">Acronimo de tres letras</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre-acronimo"
+        placeholder="ARS"
+        value="{{tla}}"
+        disabled
+      />
+    </div>
+    <div class="col-md-5">
+      <label for="input-email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="input-email"
+        placeholder="arsenalTop16@gmail.com"
+        value="{{email}}"
+        disabled
+      />
+    </div>
+    <div class="col-3">
+      <label for="input-telefono" class="form-label">Telefono</label>
+      <input
+        type="text"
+        class="form-control"
+        id="input-telefono"
+        placeholder="+264123456"
+        value="{{phone}}"
+        disabled
+      />
+    </div>
+    <div class="col-6">
+      <label for="input-pagina" class="form-label">Pagina web</label>
+      <input
+        type="text"
+        class="form-control"
+        id="input-pagina"
+        placeholder="http://www.arsenal.com"
+        value="{{website}}"
+        disabled
+      />
+    </div>
+    <div class="col-3">
+      <label for="input-fundacion" class="form-label">Año de fundacion</label>
+      <input
+        type="text"
+        class="form-control"
+        id="input-fundacion"
+        placeholder="1887"
+        value="{{founded}}"
+        disabled
+      />
+    </div>
+    <div class="col-2">
+      <label for="input-primer-color" class="form-label">Color</label>
+      <input
+        type="text"
+        class="form-control"
+        id="input-colores"
+        placeholder="Azul / Rojo"
+        value="{{clubColors}}"
+        disabled
+      />
+    </div>
+    <div class="col-7">
+      <label for="input-estadio" class="form-label">Estadio</label>
+      <input
+        type="text"
+        class="form-control"
+        id="input-estadio"
+        placeholder="El Monumental"
+        value="{{venue}}"
+        disabled
+      />
+    </div>
+    <div class="col-5">
+      <label for="input-direccion" class="form-label">Direccion</label>
+      <input
+        type="text"
+        class="form-control"
+        id="input-direccion"
+        placeholder="Avenida siempre viva"
+        value="{{address}}"
+        disabled
+      />
+    </div>
+    {{#if crestUrl}}
+      <div class="col-6">
+        <img
+          class="rounded mx-auto d-block teamImg"
+          src="{{crestUrl}}"
+          alt="Imagen del escudo de {{name}} archivo"
+        />
+      </div>
+    {{else}}
+      <div class="col-6">
+        <img
+          class="rounded mx-auto d-block teamImg"
+          src="/public/uploads/{{crestLocal}}"
+          alt="Imagen del escudo de {{name}} local"
+        />
+      </div>
+    {{/if}}
+
+  </form>
+  <div class="col-6 d-flex flex-row-reverse mt-4">
+    <a
+      href="/api/v1/clubs/"
+      class="btn btn-primary justify-content-end"
+      id="boton-retroceder-equipo"
+      value="retroceder"
+    >Retroceder</a>
+  </div>
+</div>
